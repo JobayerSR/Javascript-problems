@@ -1,0 +1,158 @@
+problem1: 
+Handle a Fulfilled Promise with then
+Promises are most useful when you have a process that takes an unknown amount of time in your code (i.e. something asynchronous), often a server request. When you make a server request it takes some amount of time, and after it completes you usually want to do something with the response from the server. This can be achieved by using the then method. The then method is executed immediately after your promise is fulfilled with resolve. Here’s an example:
+
+myPromise.then(result => {
+  
+});
+result comes from the argument given to the resolve method.
+
+Add the then method to your promise. Use result as the parameter of its callback function and log result to the console.
+
+Tests
+Waiting:You should call the then method on the promise.
+Waiting:Your then method should have a callback function with result as its parameter.
+Waiting:You should log result to the console.
+
+
+
+Answer:
+const makeServerRequest = new Promise((resolve, reject) => {
+  // responseFromServer is set to true to represent a successful response from a server
+  let responseFromServer = true;
+    makeServerRequest.then(result => {
+  console.log(result);
+});
+
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {  
+    reject("Data not received");
+  }
+});
+
+
+
+problem 2:
+
+Handle a Rejected Promise with catch
+catch is the method used when your promise has been rejected. It is executed immediately after a promise's reject method is called. Here’s the syntax:
+
+myPromise.catch(error => {
+  
+});
+error is the argument passed in to the reject method.
+
+Add the catch method to your promise. Use error as the parameter of its callback function and log error to the console.
+
+
+Tests
+Waiting:You should call the catch method on the promise.
+Waiting:Your catch method should have a callback function with error as its parameter.
+Waiting:You should log error to the console.
+
+Answer:
+const makeServerRequest = new Promise((resolve, reject) => {
+  // responseFromServer is set to false to represent an unsuccessful response from a server
+  let responseFromServer = false;
+    makeServerRequest.catch(error => {
+  console.log(error);
+});
+
+  if(responseFromServer) {
+    resolve("We got the data");
+  } else {  
+    reject("Data not received");
+  }
+});
+
+makeServerRequest.then(result => {
+  console.log(result);
+});
+
+
+
+problem 3 :
+Using the Test Method
+Regular expressions are used in programming languages to match parts of strings. You create patterns to help you do that matching.
+
+If you want to find the word the in the string The dog chased the cat, you could use the following regular expression: /the/. Notice that quote marks are not required within the regular expression.
+
+JavaScript has multiple ways to use regexes. One way to test a regex is using the .test() method. The .test() method takes the regex, applies it to a string (which is placed inside the parentheses), and returns true or false if your pattern finds something or not.
+
+let testStr = "freeCodeCamp";
+let testRegex = /Code/;
+testRegex.test(testStr);
+The test method here returns true.
+
+Apply the regex myRegex on the string myString using the .test() method.
+
+Tests
+Waiting:You should use .test() to test the regex.
+Waiting:Your result should return true.
+
+
+Answer:
+let myString = "Hello, World!";
+let myRegex = /Hello/;
+let result = myRegex.test(myString);
+
+
+problem 4:
+
+Match Literal Strings
+In the last challenge, you searched for the word Hello using the regular expression /Hello/. That regex searched for a literal match of the string Hello. Here's another example searching for a literal match of the string Kevin:
+
+let testStr = "Hello, my name is Kevin.";
+let testRegex = /Kevin/;
+testRegex.test(testStr);
+This test call will return true.
+
+Any other forms of Kevin will not match. For example, the regex /Kevin/ will not match kevin or KEVIN.
+
+let wrongRegex = /kevin/;
+wrongRegex.test(testStr);
+This test call will return false.
+
+A future challenge will show how to match those other forms as well.
+
+Complete the regex waldoRegex to find "Waldo" in the string waldoIsHiding with a literal match.
+
+Tests
+Waiting:Your regex waldoRegex should find the string Waldo
+Waiting:Your regex waldoRegex should not search for anything else.
+Waiting:You should perform a literal string match with your regex.
+
+Answer:
+
+let waldoIsHiding = "Somewhere Waldo is hiding in this text.";
+let waldoRegex = /Waldo/;
+let result = waldoRegex.test(waldoIsHiding);
+
+Problem 5 :
+Match a Literal String with Different Possibilities
+Using regexes like /coding/, you can look for the pattern coding in another string.
+
+This is powerful to search single strings, but it's limited to only one pattern. You can search for multiple patterns using the alternation or OR operator: |.
+
+This operator matches patterns either before or after it. For example, if you wanted to match the strings yes or no, the regex you want is /yes|no/.
+
+You can also search for more than just two patterns. You can do this by adding more patterns with more OR operators separating them, like /yes|no|maybe/.
+
+Complete the regex petRegex to match the pets dog, cat, bird, or fish.
+
+Tests
+Waiting:Your regex petRegex should return true for the string John has a pet dog.
+Waiting:Your regex petRegex should return false for the string Emma has a pet rock.
+Waiting:Your regex petRegex should return true for the string Emma has a pet bird.
+Waiting:Your regex petRegex should return true for the string Liz has a pet cat.
+Waiting:Your regex petRegex should return false for the string Kara has a pet dolphin.
+Waiting:Your regex petRegex should return true for the string Alice has a pet fish.
+Waiting:Your regex petRegex should return false for the string Jimmy has a pet computer.
+
+Answer:
+
+let petString = "James has a pet cat.";
+let petRegex = /dog|cat|bird|fish/;
+let result = petRegex.test(petString);
+
